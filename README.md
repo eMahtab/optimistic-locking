@@ -1,5 +1,5 @@
 # Optimistic Locking
-
+Optimistic locking is best suited for scenarios when conflicts are unlikely, or the number of conflicts will be very less.
 
 ## Step 1 : Create product_inventory table under inventory database in MySQL
 ```sql
