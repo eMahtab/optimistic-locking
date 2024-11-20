@@ -1,6 +1,20 @@
 # Optimistic Locking
 
 
+## Step 1 : Create product_inventory table under inventory database in MySQL
+```sql
+CREATE TABLE `inventory`.`product_inventory` (
+  `product_id` INT NOT NULL,
+  `product_name` VARCHAR(500) NULL,
+  `quantity` INT NOT NULL,
+  `version` BIGINT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`product_id`));
+```
+## Step 2 : Insert a product record in the product_inventory table
+```sql
+INSERT INTO product_inventory(product_id,product_name,quantity)
+VALUES (1,'Some Popular Product',5);
+```
 
 ```java
 import java.sql.Connection;
@@ -13,7 +27,7 @@ public class Test {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/inventory?useSSL=false";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "RootPass1!";
+    private static final String DB_PASSWORD = "YOUR_DB_USER_PASSWORD";
     private static final String PRODUCT_INVENTORY_TABLE = "product_inventory";
 
     public static void main(String[] args) {
