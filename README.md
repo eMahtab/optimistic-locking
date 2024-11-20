@@ -16,6 +16,7 @@ INSERT INTO product_inventory(product_id,product_name,quantity)
 VALUES (1,'Some Popular Product',5);
 ```
 
+### Step 3 : Write the code, allowing multiple threads to try to update the same record e.g. same product_id
 ```java
 import java.sql.Connection;
 import java.sql.DriverManager;
