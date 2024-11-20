@@ -140,4 +140,6 @@ Thread-2 failed to update product ID 1 due to version mismatch caused by concurr
 Thread-1 failed to update product ID 1 due to version mismatch caused by concurrent modification.
 ```
 From the above two execution outputs, we see only one thread was successfully able to update the quantity for product_id 1. All other four threads failed to update the quantity, due to version mismatch,
-which was caused by the updation of version in the database table by another thread. 
+which was caused by the updation of version in the database table by another thread. We can't guarantee how many threads would be able to successfully update the quantity, that depends on the order of execution of threads and execution delay at runtime.
+
+But we can see that many threads might fail updating the quantity in database table due to version mismatch, which is caused by the updation of version in the database table by another thread.
