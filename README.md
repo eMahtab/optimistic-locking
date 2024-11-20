@@ -290,4 +290,4 @@ Thread-1 Insufficient inventory for product ID 1. Current quantity: 1, attempted
 ```
 
 ## References :
-https://github.com/eMahtab/pessimistic-locking
+Pessimistic Locking : https://github.com/eMahtab/pessimistic-locking
