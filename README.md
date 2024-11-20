@@ -66,7 +66,7 @@ public class Test {
                                 "Current quantity: " + currentQuantity + ", attempted change: " + quantityChange);
                     }
 
-                    // Update the row with optimistic lock
+                    // Try to update the row with optimistic lock
                     String updateQuery = "UPDATE " + PRODUCT_INVENTORY_TABLE + " SET quantity = ?, version = version + 1 " +
                                          "WHERE product_id = ? AND version = ?";
                     try (PreparedStatement updateStmt = connection.prepareStatement(updateQuery)) {
