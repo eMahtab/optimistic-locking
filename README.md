@@ -157,7 +157,7 @@ public class TestWithRetry {
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/inventory?useSSL=false";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "RootPass1!";
+    private static final String DB_PASSWORD = "YOUR_DB_USER_PASSWORD";
     private static final String PRODUCT_INVENTORY_TABLE = "product_inventory";
 
     private static final int MAX_RETRIES = 3; // Max number of retries for version mismatch
@@ -254,6 +254,39 @@ public class TestWithRetry {
         }
     }
 }
+```
+
+### Code Execution Output :
+```
+Thread-2 attempt 1 to updateProductInventory() with quantity change: -2
+Thread-4 attempt 1 to updateProductInventory() with quantity change: -2
+Thread-0 attempt 1 to updateProductInventory() with quantity change: -1
+Thread-3 attempt 1 to updateProductInventory() with quantity change: 1
+Thread-1 attempt 1 to updateProductInventory() with quantity change: -2
+Thread-2 successfully updated product 1 to quantity: 3
+Thread-0 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-4 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-3 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-4 retrying due to version mismatch (attempt 1 falied).
+Thread-4 attempt 2 to updateProductInventory() with quantity change: -2
+Thread-3 retrying due to version mismatch (attempt 1 falied).
+Thread-3 attempt 2 to updateProductInventory() with quantity change: 1
+Thread-0 retrying due to version mismatch (attempt 1 falied).
+Thread-0 attempt 2 to updateProductInventory() with quantity change: -1
+Thread-1 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-1 retrying due to version mismatch (attempt 1 falied).
+Thread-1 attempt 2 to updateProductInventory() with quantity change: -2
+Thread-4 successfully updated product 1 to quantity: 1
+Thread-3 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-0 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-3 retrying due to version mismatch (attempt 2 falied).
+Thread-3 attempt 3 to updateProductInventory() with quantity change: 1
+Thread-0 retrying due to version mismatch (attempt 2 falied).
+Thread-0 attempt 3 to updateProductInventory() with quantity change: -1
+Thread-0 successfully updated product 1 to quantity: 0
+Thread-3 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-3 reached max retries. Update failed for product ID 1.
+Thread-1 Insufficient inventory for product ID 1. Current quantity: 1, attempted change: -2
 ```
 
 
