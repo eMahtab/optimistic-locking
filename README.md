@@ -5,6 +5,10 @@ Below is a simple example which explains the optimistic locking, where multiple 
 
 Also the program doesn't allow the updateProductInventory() operation where the update would result in setting a value which is less than zero for quantity. It throws an InsufficientProductInventoryException.
 
+**Note :**
+
+One very important thing to note is, in Optimistic Locking, we don't lock the table row, multiple threads can read the table and try to update the table.
+The update in table will be successfull if no other thread have updated the version in between, but if the version is updated in between by any other thread then update will fail. Since we don't lock the table row, this approach performs better and when number of conflicts are expected to be very less, optimistic locking will be a better approach.
 ## Step 1 : Create product_inventory table under inventory database in MySQL
 ```sql
 CREATE TABLE `inventory`.`product_inventory` (
