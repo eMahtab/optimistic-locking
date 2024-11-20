@@ -289,4 +289,5 @@ Thread-3 reached max retries. Update failed for product ID 1.
 Thread-1 Insufficient inventory for product ID 1. Current quantity: 1, attempted change: -2
 ```
 
-
+## References :
+https://github.com/eMahtab/pessimistic-locking
