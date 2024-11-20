@@ -1,5 +1,5 @@
 # Optimistic Locking
-Optimistic locking is best suited for scenarios when conflicts are unlikely, or the number of conflicts will be very less.
+**Optimistic locking is best suited for scenarios when conflicts are unlikely, or the number of conflicts will be very less.**
 
 Below is a simple example which explains the optimistic locking, where multiple threads (5 in this case) try to update the quantity in product_inventory table for product_id 1. Only one thread at a time update the quantity for product_id 1. Other threads trying to update the quantity in database table will fail, if another thread have already updated the quantity (which means changed the version number) in between..
 
