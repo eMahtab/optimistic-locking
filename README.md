@@ -126,3 +126,18 @@ Thread-2 failed to update product ID 1 due to version mismatch caused by concurr
 Thread-0 failed to update product ID 1 due to version mismatch caused by concurrent modification.
 Thread-4 failed to update product ID 1 due to version mismatch caused by concurrent modification.
 ```
+## Output 2 :
+```
+Thread-2 entered updateProductInventory() execution: -2
+Thread-0 entered updateProductInventory() execution: -1
+Thread-4 entered updateProductInventory() execution: -1
+Thread-3 entered updateProductInventory() execution: 2
+Thread-1 entered updateProductInventory() execution: -2
+Thread-0 updated product 1 to quantity: 4
+Thread-4 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-3 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-2 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-1 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+```
+In the above two execution outputs, we see only one thread was successfully able to update the quantity for product_id 1. All other four threads failed to update the quantity, due to version mismatch,
+which was caused by the updation of version in the database table by another thread. 
