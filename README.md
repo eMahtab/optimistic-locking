@@ -1,7 +1,7 @@
 # Optimistic Locking
 **Optimistic locking is best suited for scenarios when conflicts are unlikely, or the number of conflicts will be very less.**
 
-Below is a simple example which explains the optimistic locking, where multiple threads (5 in this case) try to update the quantity in product_inventory table for product_id 1. Only one thread at a time update the quantity for product_id 1. Other threads trying to update the quantity in database table will fail, if another thread have already updated the quantity (which means changed the version number) in between..
+Below is a simple example which explains the optimistic locking, where multiple threads (5 in this case) try to update the quantity in product_inventory table for product_id 1. Only one thread at a time would be able to successfully update the quantity for product_id 1. Other threads trying to update the quantity in database table will fail, if another thread have already updated the quantity (which means changed the version number) in between..
 
 Also the program doesn't allow the updateProductInventory() operation where the update would result in setting a value which is less than zero for quantity. It throws an InsufficientProductInventoryException.
 
