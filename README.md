@@ -106,3 +106,23 @@ public class Test {
 }
 
 ```
+
+## Code Execution Outputs :
+**Note that at the start of every run, I manually set the quanity of product_id 1 to 5 with an update statement**
+```sql
+UPDATE product_inventory set quantity= 5 where product_id = 1
+```
+
+## Output 1 :
+```
+Thread-1 entered updateProductInventory() execution: -2
+Thread-0 entered updateProductInventory() execution: -1
+Thread-3 entered updateProductInventory() execution: 2
+Thread-2 entered updateProductInventory() execution: -2
+Thread-4 entered updateProductInventory() execution: -1
+Thread-3 updated product 1 to quantity: 7
+Thread-1 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-2 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-0 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+Thread-4 failed to update product ID 1 due to version mismatch caused by concurrent modification.
+```
